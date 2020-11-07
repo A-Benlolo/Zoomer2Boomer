@@ -1,0 +1,25 @@
+{
+  "name": "zoomer2boomer",
+  "version": "1.0.0",
+  "description": "Zoomer2Boomer is an online translation tool that aims to fill the generational gap that is made evident by modern day slang.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Alex Benlolo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A-Benlolo/Zoomer2Boomer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/A-Benlolo/Zoomer2Boomer/issues"
+  },
+  "homepage": "https://github.com/A-Benlolo/Zoomer2Boomer#readme"
+}

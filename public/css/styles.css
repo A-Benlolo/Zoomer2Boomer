@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
+/***************/
+/* Page Styles */
+/***************/
+body {
+    margin: 0;
+    background: #2a2a2a;
+    color: #daa520;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+}
+/***************/
+/* Text Styles */
+/***************/
+
+.title {
+    text-align: center;
+    font-size: 10vw;
+    text-shadow:
+        -3px -3px 0 #000000,  
+        3px -3px 0 #000000,
+        -3px 3px 0 #000000,
+        3px 3px 0 #000000;
+    text-decoration: underline;
+}
+
+subtitle {
+    font-size: 3vw;
+    text-shadow:
+        -2px -2px 0 #000000,  
+        2px -2px 0 #000000,
+        -2px 2px 0 #000000,
+        2px 2px 0 #000000;
+}
+
+/********************/
+/* Text Area Styles */
+/********************/
+textarea {
+    width: 30vw;
+    height: 30vh;
+    background-color: #999999;
+    resize: none;
+    outline: none;
+    border-width: 3px;
+    border-color: #000000;
+    font-family: 'Work Sans', sans-serif;
+    font-size: large;
+}
+
+textarea::placeholder {
+    color: #444444;
+}
+
+/***************/
+/* Grid Styles */
+/***************/
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.grid-slang {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.grid-arrow {
+    grid-row: 1;
+    grid-column: 2;
+}
+.grid-arrow > img {
+    width: 20vw;
+    padding-top: 13vh;
+}
+
+.grid-formal {
+    grid-row: 1;
+    grid-column: 3;
+}
