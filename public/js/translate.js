@@ -28,22 +28,24 @@ async function doTranslation() {
         // Fetch the query of the current term
         currQuery = await fetchQuery(currTerm);
 
+        // If the term is requested to be defined as slang
+        if(tokens[i].startsWith('$') && tokens[i].replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||-|_|\+|=)/g,"").endsWith('$'))
+            workingSentence = await forceSlangDefinition(tokens[i], currTerm, workingSentence, currQuery);
+
         // If the term is not in the dictionary, try to fetch the translation
-        if(isEmpty(currQuery)) {
+        else if(isEmpty(currQuery)) {
             currQuery = await scrapeDefinition(currTerm);
+
             // If the scrap was unsuccessful, add the to the unknown list and append the token
             if(!currQuery) {
-                document.getElementById("unknownlist").innerHTML += currTerm + "<br/>";
-                workingSentence += " " + tokens[i];
+                updatedUnknownList(currTerm);
+                workingSentence = workingSentence.concat(" ", tokens[i]);
             }
             // Else, append the scrapped definition and add it to the translation list
             else {
-                document.getElementById("translationlist").innerHTML += currTerm + " = " + currQuery + "*<br/>";
-                workingSentence+= " " + currQuery;
-                
-                // If there is punctuation, add it
-                if(currTerm != tokens[i])
-                    workingSentence += tokens[i].charAt(tokens[i].length - 1);
+                updateTranslationList(currTerm, currQuery, true);
+                workingSentence = workingSentence.concat(" ", currQuery);
+                workingSentence = addPunctuation(workingSentence, tokens[i], currTerm);
             }
         }
 
@@ -51,22 +53,20 @@ async function doTranslation() {
         else {
             // If the term is slang, add it to the translation list
             if(`${currQuery[0].isSlang}` == 1) {
-                document.getElementById("translationlist").innerHTML += currQuery[0].term + " = " + currQuery[0].translation + "<br/>";
-                workingSentence += " " + currQuery[0].translation;
-
-                // If there is punctuation, add it
-                if(currTerm != tokens[i])
-                    workingSentence += tokens[i].charAt(tokens[i].length - 1);
+                updateTranslationList(currQuery[0].term, currQuery[0].translation, false);
+                workingSentence = workingSentence.concat(" ", currQuery[0].translation);
+                workingSentence = addPunctuation(workingSentence, tokens[i], currTerm);
             }
             else
                 workingSentence += " " + tokens[i];
 
         }
-    }
 
-    // Remove the first character of the final sentece, since it is a space
-    workingSentence = workingSentence.substring(1);
-    document.getElementById("formal").value = workingSentence;
+        // Set the working sentence to the formal text
+        if(workingSentence.startsWith(" "))
+            workingSentence = workingSentence.substring(1);
+        document.getElementById("formal").value = workingSentence;
+    }
 
     // Add the disclaimer if UrbanDictionary translations were used
     if(document.getElementById("translationlist").innerHTML.includes("*"))
@@ -140,4 +140,90 @@ async function scrapeDefinition(term) {
 
     // Return the definition
     return data;
+}
+
+/**
+ * Update the translations list to include a new translation.
+ * 
+ * @param {String} term The word being translated.
+ * @param {String} translation The translation of term.
+ * @param {boolean} isScraped If the translation was scraped from UrbanDictionary.
+ */
+function updateTranslationList(term, translation, isScraped) {
+    if(isScraped)
+        document.getElementById("translationlist").innerHTML += term + " = " + translation + "*<br/>";
+    else
+        document.getElementById("translationlist").innerHTML += term + " = " + translation + "<br/>";
+}
+
+/**
+ * Update the unknown list to include a new term.
+ * 
+ * @param {String} term The unknown term.
+ */
+function updatedUnknownList(term) {
+    document.getElementById("unknownlist").innerHTML += term + "<br/>";
+}
+
+/**
+ * Add punctuation to the end of a sentence if it was originally there.
+ * 
+ * @param {string} sentence The translated sentence.
+ * @param {string} original The term before sanitization.
+ * @param {string} updated The term after sanitization.
+ * 
+ * @returns {string} The updated sentence.
+ */
+function addPunctuation(sentence, original, updated) {
+    if(updated != original.toLowerCase() && !original.endsWith("$"))
+        return (sentence + original.charAt(original.length - 1));
+    return sentence;
+}
+
+/**
+ * Force the slang definition of a term.
+ * 
+ * @param {string} original The term before sanitization.
+ * @param {string} updated The term after sanitization.
+ * @param {string} sentence The translated sentence
+ * @param {JSON} query The JSON array from a query
+ * 
+ * @returns The updated sentence.
+ */
+async function forceSlangDefinition(original, updated, sentence, query) {
+    // Keep track of if a definition has been found
+    var foundDef = false;
+
+    // Check the database
+    if(!isEmpty(query)) {
+        // Check for a saved slang definition
+        for(var j = 0; j < query.length; j++) {
+            foundDef = (`${query[j].isSlang}` == 1);
+            if(foundDef) {
+                updateTranslationList(query[j].term, query[j].translation, false);
+                sentence = sentence.concat(" ", query[j].translation);
+                sentence = addPunctuation(sentence, original, updated);
+                break;
+            }
+        }
+    }
+
+    // Check for a scraped definition
+    if(!foundDef) {
+        query = await scrapeDefinition(updated);
+        
+        // If the scrap was unsuccessful, add the to the unknown list and append the token
+        if(!query) {
+            updatedUnknownList(updated);
+            sentence = sentence.concat(" ", updated);
+        }
+        // Else, append the scrapped definition and add it to the translation list
+        else {
+            updateTranslationList(updated, query, true);
+            sentence = sentence.concat(" ", query);
+            sentence = addPunctuation(sentence, original, updated);
+        }
+    }
+
+    return sentence;
 }

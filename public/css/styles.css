@@ -38,10 +38,10 @@ subsubtitle {
     font-size: 2vw;
     color: #d3ac48;
     text-shadow:
-        -2px -2px 0 #000000,  
-        2px -2px 0 #000000,
-        -2px 2px 0 #000000,
-        2px 2px 0 #000000;
+        -1px -1px 0 #000000,  
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000,
+        1px 1px 0 #000000;
     text-decoration: underline;
 }
 
@@ -49,10 +49,20 @@ listtext {
     font-size: 1.5vw;
     color: #d3ac48;
     text-shadow:
-        -2px -2px 0 #000000,  
-        2px -2px 0 #000000,
-        -2px 2px 0 #000000,
-        2px 2px 0 #000000;
+        -1px -1px 0 #000000,  
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000,
+        1px 1px 0 #000000;
+}
+
+tiptext {
+    font-size: 1vw;
+    color: #d3ac48;
+    text-shadow:
+        -1px -1px 0 #000000,  
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000,
+        1px 1px 0 #000000;
 }
 
 /********************/

@@ -26,7 +26,7 @@ app.set('view engine', 'pug')
 
 // Create the GET to query for a term and return the corresponding rows
 app.get('/query/:term', (request, response) => {
-    let sql = `SELECT * FROM word WHERE term="${request.params.term}"`
+    let sql = `SELECT * FROM word WHERE term="${request.params.term}" ORDER BY isSlang ASC`
     connection.query(sql, (err, result) => {
         if(err) throw err
         response.json(result)
@@ -89,9 +89,13 @@ app.get('/scrape/:term', (request, response) => {
                 "(as a noun) ",
                 "(as an adjective) ",
                 "similar to ",
+                "is the name of ",
+                "is the ",
+                "the name of ",
+                "another name for ",
             ]
             for(var i = 0; i < introPhases.length; i++)
-                definition = definition.replace(introPhases[i], "");
+                definition = definition.replace(introPhases[i], "");   
             
             // Get the sentence fragment before any puncuation
             var puncuations = [
@@ -104,22 +108,24 @@ app.get('/scrape/:term', (request, response) => {
             for(var i = 0; i < puncuations.length; i++)
                 [definition] = definition.split(puncuations[i]);
 
-        // Remove an introductory words (should be ending in a space)
-        var introWords = [
-            "to ",
-            "a ",
-            "any ",
-        ]
-        for(var i = 0; i < introWords.length; i++) 
-            if(definition.startsWith(introWords[i]))
-                definition = definition.replace(introWords[i], "");
+            // Remove an introductory words (should be ending in a space)
+            var introWords = [
+                "to ",
+                "a ",
+                "an ",
+                "any ",
+                "the ",
+            ]
+            for(var i = 0; i < introWords.length; i++) 
+                if(definition.startsWith(introWords[i]))
+                    definition = definition.replace(introWords[i], "");
 
-        // Get the lefthand side of an or statement
-        [definition] = definition.split(" or ");
-        [definition] = definition.split(" but ");
+            // Get the lefthand side of an or statement
+            [definition] = definition.split(" or ");
+            [definition] = definition.split(" but ");
 
-        // Replace + with and
-        definition = definition.replace("+", "and");
+            // Replace + with and
+            definition = definition.replace("+", "and");
         }
 
         await browser.close();
