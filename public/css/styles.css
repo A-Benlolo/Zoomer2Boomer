@@ -34,6 +34,27 @@ subtitle {
         2px 2px 0 #000000;
 }
 
+subsubtitle {
+    font-size: 2vw;
+    color: #d3ac48;
+    text-shadow:
+        -2px -2px 0 #000000,  
+        2px -2px 0 #000000,
+        -2px 2px 0 #000000,
+        2px 2px 0 #000000;
+    text-decoration: underline;
+}
+
+listtext {
+    font-size: 1.5vw;
+    color: #d3ac48;
+    text-shadow:
+        -2px -2px 0 #000000,  
+        2px -2px 0 #000000,
+        -2px 2px 0 #000000,
+        2px 2px 0 #000000;
+}
+
 /********************/
 /* Text Area Styles */
 /********************/
@@ -69,6 +90,12 @@ textarea::placeholder {
     grid-column: 1;
 }
 
+.grid-unknowns {
+    padding-top: 3vh;
+    grid-row: 2;
+    grid-column: 1;
+}
+
 .grid-arrow {
     grid-row: 1;
     grid-column: 2;
@@ -76,6 +103,25 @@ textarea::placeholder {
 .grid-arrow > img {
     width: 20vw;
     padding-top: 13vh;
+}
+
+.grid-button {
+    grid-row: 2;
+    grid-column: 2;
+}
+.grid-button > button {
+    background-color: #111;
+    color: #daa520;
+    width: 15vw;
+    height: 5vh;
+    font-family: 'Work Sans', sans-serif;
+    font-size: larger;
+}
+
+.grid-translations {
+    padding-top: 3vh;
+    grid-row: 2;
+    grid-column: 3;
 }
 
 .grid-formal {

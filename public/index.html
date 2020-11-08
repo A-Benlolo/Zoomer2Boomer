@@ -18,7 +18,7 @@
                 <subtitle>Slang</subtitle><br/>
                 <textarea
                     id="slang"
-                    oninput="translate/doTranslation()"
+                    oninput="translate/reset()"
                     autofocus=true
                     placeholder="Type your slang sentence here."></textarea>
             </div>
@@ -28,6 +28,20 @@
                 <img src="img/arrow.png"/>
             </div>
 
+            <!-- The list of translations -->
+            <div class="grid-translations">
+                <subsubtitle>Translations:</subsubtitle>
+                <br/>
+                <listtext id="translationlist"></listtext>
+            </div>
+
+            <!-- The list of unknowns -->
+            <div class="grid-unknowns">
+                <subsubtitle>Unknown:</subsubtitle>
+                <br/>
+                <listtext id="unknownlist"></listtext>
+            </div>
+
             <!-- The text area and title for the formal translation -->
             <div class="grid-formal">
                 <subtitle>Formal</subtitle><br/>
@@ -35,6 +49,13 @@
                     readonly=true
                     id="formal"
                     placeholder="Your formal sentence will appear here."></textarea>
+            </div>
+
+            <!-- The button to do the translations -->
+            <div class="grid-button">
+                <button
+                    type="button"
+                    onclick="translate/doTranslation()">Translate</button>
             </div>
         </div>
 
