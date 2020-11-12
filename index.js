@@ -88,11 +88,18 @@ app.get('/scrape/:term', (request, response) => {
                 "(as a verb) ",
                 "(as a noun) ",
                 "(as an adjective) ",
+                "(as an adj) ",
                 "similar to ",
                 "is the name of ",
                 "is the ",
                 "the name of ",
                 "another name for ",
+                "is a ",
+                "something used when referring to a ",
+                "verb: ",
+                "noun: ",
+                "adjective: ",
+                "adj: ",
             ]
             for(var i = 0; i < introPhases.length; i++)
                 definition = definition.replace(introPhases[i], "");   
