@@ -1,0 +1,31 @@
+1.) Download the whole "Zoomer2Boomer-Database-Connection" folder and put it somewhere that you can access it easily. (This folder will be referred to as Z2B from now on)
+
+2.) Install Node.js onto your machine, and select version 14.15.0
+	Link -->	https://nodejs.org/en/
+
+3.) Install MySQL Workbench onto your machine, version 8.0.22
+	Link -->	https://dev.mysql.com/downloads/workbench/
+
+4.) There are 2 ways to start the MySQL server
+	a.) By entering 
+		"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld" --console
+	    into the cmd prompt
+	b.) Search "Services" in the start menu. Look for "MySQL80" and double click on it. Click on start, and the server should start to work
+
+5.) Open MySQL workbench, and add a connection to the database, with the IP as localhost and the port being 3306, and both user and password set as root.
+
+6.) After a connection has been made to the database, select to open up an SQL script under file, then navigate to where you saved the Z2B folder, open up the "MySQL" folder, and select "createSchemaAndTables"
+
+7.) Once the File opens in MySQL Workbench, run the query to create the database table and contents.
+
+8.) While still having the MySQL Workbench open, run the two following queries;
+	ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
+	flush privileges;
+    Where root as your user localhost as your URL and password as your password
+
+9.) Now open up the Command Prompt and run this command to start the website:
+	node index.js
+
+10.) To see the website, visit localhost:3000
+
+11.) Everything should now be setup.
