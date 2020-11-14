@@ -1,5 +1,7 @@
 # Zoomer2Boomer
-![Logo](./public/img/logo.png "A beautiful logo") Zoomer2Boomer is an online translation tool that aims to fill the generational gap that is made evident by modern day slang.
+![Logo](./public/img/logo.png "A beautiful logo")
+
+Zoomer2Boomer is an online translation tool that aims to fill the generational gap that is made evident by modern day slang.
 
 ## Setup Instructions
 1. Download the Zoomer2Boomer project.
