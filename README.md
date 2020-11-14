@@ -20,8 +20,10 @@ Zoomer2Boomer is an online translation tool that aims to fill the generational g
 8. Execute the script by pressing `Ctrl+Shift+Enter`
 9. Open a new Query Tab by pressing `Ctrl+T`
 10. Copy and paste the following queries into the new tab:
-        ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
-        flush privileges;
+  ```
+  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+  flush privileges;
+  ```
 11. Execute the queries by pressing `Ctrl+Shift+Enter`
 12. Open the command prompt and navigate to the Zoomer2Boomer folder.
 13. Type `node index.js` and press `Enter` to start the website.
