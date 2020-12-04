@@ -130,6 +130,11 @@ async function fetchQuery(token) {
     return data;
 }
 
+/**
+ * Get all the terms from the database by using cheeky SQL injection
+ * 
+ * @returns An array of all terms in the dabase.
+ */
 async function fetchAllTerms() {
     var response = await fetch('query/" OR 1=1 -- c');
     var data = await response.json();
