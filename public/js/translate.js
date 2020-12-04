@@ -1,3 +1,5 @@
+var wordList = fetchAllTerms();
+
 /**
  * Translate the contents of the slang text area and put it in the formal text area
  */
@@ -93,7 +95,9 @@ function tokenize(str) {
     // For each word in the setence...
     for(var i = 0; i < tokens.length; i++) {
         // Sanitize the input to prevent sql injection
-        tokens[i] = tokens[i].replace("'", "\'")
+        tokens[i] = tokens[i].replace(/\"/g, "");
+        tokens[i] = tokens[i].replace(/\'/g, "");
+        tokens[i] = tokens[i].replace(/\`/g, "");
     }
 
     return tokens;
@@ -124,6 +128,16 @@ async function fetchQuery(token) {
     var data = await response.json();
     
     return data;
+}
+
+async function fetchAllTerms() {
+    var response = await fetch('query/" OR 1=1 -- c');
+    var data = await response.json();
+    var allTerms = {}
+    for(var i = 0; i < data.length; i++)
+        allTerms[i] = data[i].translation;
+    
+    return allTerms;
 }
 
 /**

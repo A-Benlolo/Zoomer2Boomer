@@ -100,6 +100,7 @@ app.get('/scrape/:term', (request, response) => {
                 "noun: ",
                 "adjective: ",
                 "adj: ",
+                "feel ",
             ]
             for(var i = 0; i < introPhases.length; i++)
                 definition = definition.replace(introPhases[i], "");   
