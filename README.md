@@ -9,20 +9,29 @@ Zoomer2Boomer is an online translation tool that aims to fill the generational g
 
 2. Install [Node.js](https://nodejs.org/en/) version 14.15.0 onto your machine.
 3. Install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) version 8.0.22 onto your machine.
-4. Start the MySQL server one of two ways:
-   * Enter `"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld" --console` into the command prompt.
+4. Install [MySQL Community Server] (https://dev.mysql.com/downloads/mysql/) version 8.0.22 onto your machine.
+5. When installing MySQL Server, 
+	* Select the add option on the right
+	* Expand the MySQL Servers tab by clicking on the + icon
+	* Keep expanding the tabs until you can see "MySQL Server 8.0.22 - X64"
+	* Select "MySQL Server 8.0.22 - X64" then between the two boxes, click the green arrow that is pointing to the right
+	* Then click next
+	* Then click Execute
+	* Follow through the setup leaving everything as default until you get to the screen where you set the root password
+	* Set the password as "root"
+	* Follow through the setup again until finished.
+5. Start the MySQL server one of two ways:
    * Search "Services" in the start menu. Look for "MySQL80", double click it, and click on start.
-5. Open MySQL Workbench and setup a new connection with the following information and connect:
+6. Open MySQL Workbench and setup a new connection with the following information and connect:
    * IP - localhost
    * port - 3306
    * user - root
    * password - root
-6. Select File > Open SQL Script...
-
-7. Navigate to the Zoomer2Boomer folder, open the MySQL folder, and select `createSchemaAndTables.sql`
-8. Execute the script by pressing `Ctrl+Shift+Enter`
-9. Open a new Query Tab by pressing `Ctrl+T`
-10. Copy and paste the following queries into the new tab:
+7. Select File > Open SQL Script...
+8. Navigate to the Zoomer2Boomer folder, open the MySQL folder, and select `createSchemaAndTables.sql`
+9. Execute the script by pressing `Ctrl+Shift+Enter`
+10. Open a new Query Tab by pressing `Ctrl+T`
+11. Copy and paste the following queries into the new tab:
     * `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';`
     * `flush privileges;`
 12. Execute the queries by pressing `Ctrl+Shift+Enter`
