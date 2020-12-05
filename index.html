@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <meta charset="UTF-8">
+        
+        <title>Zoomer2Boomer</title>
+
+        <link rel="shortcut icon" href="img/favicon.ico"/>
+        <script>
+            // This function was made for setting the cursor 
+            function setCursor(){
+                document.body.style.cursor='wait';
+            }
+            function loadBar(){
+                var bar = document.getElementById("loadBar");
+                if (bar.style.display === "none") {
+                    bar.style.display = "block";
+                } else {
+                    bar.style.display = "none";
+                }
+            }
+        </script>
+    
+    </head>
+    
+    <body>
+        <!-- The larger title at the top of the screen -->
+        <div class="title">Zoomer2Boomer</div>
+
+        <div class="grid-container">
+            <!-- The text area and title for the slang -->
+            <div class="grid-slang">
+                <subtitle>Slang</subtitle><br/>
+                <textarea
+                    id="slang"
+                    oninput="translate/reset()"
+                    autofocus=true
+                    placeholder="Type your slang sentence here."></textarea>
+            </div>
+
+            <!-- The arrow between the text areas -->
+            <div class="grid-arrow">
+                <img src="img/arrow.png"/>
+            </div>
+
+            <!-- The list of translations -->
+            <div class="grid-translations">
+                <subsubtitle>Translations:</subsubtitle>
+                <br/>
+                <listtext id="translationlist"></listtext>
+            </div>
+
+            <!-- The list of unknowns -->
+            <div class="grid-unknowns">
+                <subsubtitle>Unknown:</subsubtitle>
+                <br/>
+                <listtext id="unknownlist"></listtext>
+            </div>
+
+            <!-- The text area and title for the formal translation -->
+            <div class="grid-formal">
+                <subtitle>Formal</subtitle><br/>
+                <textarea
+                    readonly=true
+                    id="formal"
+                    placeholder="Your formal sentence will appear here."></textarea>
+            </div>
+            
+            <div id = "loadBar" hidden>
+                <div id="loadBarDone"></div>
+            </div>
+
+            
+            <!-- The button to do the translations -->
+            <div class="grid-button">
+                <button
+                    type="button"
+                    onclick="loadBar(); setCursor(); translate/doTranslation()">Translate</button>
+                <br/>
+                <tiptext>
+                    Tip: surround a word with $ to force a slang definition
+                    <br/><br/>
+                    e.g $tea$
+                </tiptext>
+            </div>
+        </div>
+
+        <!-- The scripts used to run the JavaScript-->
+        <script src="js/require.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="js/translate.js"></script>
+    </body>
+</html>

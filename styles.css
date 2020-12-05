@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
+/***************/
+/* Page Styles */
+/***************/
+body {
+    margin: 0;
+    background: #2a2a2a;
+    color: #daa520;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+}
+/***************/
+/* Text Styles */
+/***************/
+
+.title {
+    text-align: center;
+    font-size: 10vw;
+    text-shadow:
+        -3px -3px 0 #000000,  
+        3px -3px 0 #000000,
+        -3px 3px 0 #000000,
+        3px 3px 0 #000000;
+    text-decoration: underline;
+}
+
+subtitle {
+    font-size: 3vw;
+    text-shadow:
+        -2px -2px 0 #000000,  
+        2px -2px 0 #000000,
+        -2px 2px 0 #000000,
+        2px 2px 0 #000000;
+}
+
+subsubtitle {
+    font-size: 2vw;
+    color: #d3ac48;
+    text-shadow:
+        -1px -1px 0 #000000,  
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000,
+        1px 1px 0 #000000;
+    text-decoration: underline;
+}
+
+listtext {
+    font-size: 1.5vw;
+    color: #d3ac48;
+    text-shadow:
+        -1px -1px 0 #000000,  
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000,
+        1px 1px 0 #000000;
+}
+
+tiptext {
+    font-size: 1vw;
+    color: #d3ac48;
+    text-shadow:
+        -1px -1px 0 #000000,  
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000,
+        1px 1px 0 #000000;
+}
+
+/********************/
+/* Text Area Styles */
+/********************/
+textarea {
+    width: 30vw;
+    height: 30vh;
+    background-color: #999999;
+    resize: none;
+    outline: none;
+    border-width: 3px;
+    border-color: #000000;
+    font-family: 'Work Sans', sans-serif;
+    font-size: large;
+}
+
+textarea::placeholder {
+    color: #444444;
+}
+
+
+/********************/
+/* Load Bar Styles  */
+/********************/
+#loadBar{
+    width: 15vw;
+    height: 3vh;
+    grid-row: 1;
+    grid-column: 2;
+    border: 0.3rem solid black;
+    margin-top: 30vh;
+    margin-left: 6vw;
+    margin-right: 4vw;
+    background-color: #999999;
+    vertical-align: center;
+
+}
+
+#loadBarDone{
+    height: 2.9vh;
+    background-color: green;
+    width: 0%;
+}
+
+/***************/
+/* Grid Styles */
+/***************/
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.grid-slang {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.grid-unknowns {
+    padding-top: 3vh;
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.grid-arrow {
+    grid-row: 1;
+    grid-column: 2;
+}
+.grid-arrow > img {
+    width: 20vw;
+    padding-top: 13vh;
+}
+
+.grid-button {
+    grid-row: 2;
+    grid-column: 2;
+}
+.grid-button > button {
+    background-color: #111;
+    color: #daa520;
+    width: 15vw;
+    height: 5vh;
+    font-family: 'Work Sans', sans-serif;
+    font-size: larger;
+}
+
+.grid-translations {
+    padding-top: 3vh;
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.grid-formal {
+    grid-row: 1;
+    grid-column: 3;
+}
