@@ -9,7 +9,7 @@ Zoomer2Boomer is an online translation tool that aims to fill the generational g
 
 2. Install [Node.js](https://nodejs.org/en/) version 14.15.0 onto your machine.
 3. Install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) version 8.0.22 onto your machine.
-4. Install [MySQL Community Server](https://dev.mysql.com/downloads/installer/) version 8.0.22 onto your machine.
+4. Install [MySQL Community Server](https://dev.mysql.com/downloads/installer/) version 8.0.22 (Second download  (400Mb)) onto your machine.
 5. When installing MySQL Server, 
 	* Select the add option on the right
 	* Expand the MySQL Servers tab by clicking on the + icon
@@ -20,7 +20,7 @@ Zoomer2Boomer is an online translation tool that aims to fill the generational g
 	* Follow through the setup leaving everything as default until you get to the screen where you set the root password
 	* Set the password as "root"
 	* Follow through the setup again until finished.
-5. Start the MySQL server one of two ways:
+5. Start the MySQL server:
    * Search "Services" in the start menu. Look for "MySQL80", double click it, and click on start.
 6. Open MySQL Workbench and setup a new connection with the following information and connect:
    * IP - localhost
@@ -36,8 +36,9 @@ Zoomer2Boomer is an online translation tool that aims to fill the generational g
     * `flush privileges;`
 12. Execute the queries by pressing `Ctrl+Shift+Enter`
 13. Open the command prompt and navigate to the Zoomer2Boomer folder.
-14. Type `node index.js` and press `Enter` to start the website.
-15. To see the website, visit [localhost:3000](http://localhost:3000) in your web browser.
+14. Type in "npm i puppeteer" and wait for that to finish installing
+15. Type `node index.js` and press `Enter` to start the website.
+16. To see the website, visit [localhost:3000](http://localhost:3000) in your web browser.
 
 ## The Dictionary
 The non-slang terms found in the Zoomer2Boomer dictionary are sourced from the words file found on most UNIX systems. All characters have been made lowercase and any word containing characters that are not English have been removed. After these alterations, all repeat words were also removed.
