@@ -9,7 +9,7 @@ Zoomer2Boomer is an online translation tool that aims to fill the generational g
 
 2. Install [Node.js](https://nodejs.org/en/) version 14.15.0 onto your machine.
 3. Install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) version 8.0.22 onto your machine.
-4. Install [MySQL Community Server] (https://dev.mysql.com/downloads/mysql/) version 8.0.22 onto your machine.
+4. Install [MySQL Community Server] (https://dev.mysql.com/downloads/installer/) version 8.0.22 onto your machine.
 5. When installing MySQL Server, 
 	* Select the add option on the right
 	* Expand the MySQL Servers tab by clicking on the + icon
