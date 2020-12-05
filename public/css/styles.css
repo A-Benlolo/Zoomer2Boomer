@@ -84,6 +84,30 @@ textarea::placeholder {
     color: #444444;
 }
 
+
+/********************/
+/* Load Bar Styles  */
+/********************/
+#loadBar{
+    width: 15vw;
+    height: 3vh;
+    grid-row: 1;
+    grid-column: 2;
+    border: 0.3rem solid black;
+    margin-top: 30vh;
+    margin-left: 6vw;
+    margin-right: 4vw;
+    background-color: #999999;
+    vertical-align: center;
+
+}
+
+#loadBarDone{
+    height: 2.9vh;
+    background-color: green;
+    width: 0%;
+}
+
 /***************/
 /* Grid Styles */
 /***************/

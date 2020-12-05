@@ -2,10 +2,25 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <meta charset="UTF-8">
-
+        
         <title>Zoomer2Boomer</title>
 
         <link rel="shortcut icon" href="img/favicon.ico"/>
+        <script>
+            // This function was made for setting the cursor 
+            function setCursor(){
+                document.body.style.cursor='wait';
+            }
+            function loadBar(){
+                var bar = document.getElementById("loadBar");
+                if (bar.style.display === "none") {
+                    bar.style.display = "block";
+                } else {
+                    bar.style.display = "none";
+                }
+            }
+        </script>
+    
     </head>
     
     <body>
@@ -50,12 +65,17 @@
                     id="formal"
                     placeholder="Your formal sentence will appear here."></textarea>
             </div>
+            
+            <div id = "loadBar" hidden>
+                <div id="loadBarDone"></div>
+            </div>
 
+            
             <!-- The button to do the translations -->
             <div class="grid-button">
                 <button
                     type="button"
-                    onclick="translate/doTranslation()">Translate</button>
+                    onclick="loadBar(); setCursor(); translate/doTranslation()">Translate</button>
                 <br/>
                 <tiptext>
                     Tip: surround a word with $ to force a slang definition
