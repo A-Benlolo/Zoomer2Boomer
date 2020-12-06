@@ -33,6 +33,15 @@ app.get('/query/:term', (request, response) => {
     })
 })
 
+// Create the GET to query for all terms
+app.get('/queryAll', (request, response) => {
+    let sql = `SELECT term FROM word`
+    connection.query(sql, (err, result) => {
+        if(err) throw err
+        response.json(result)
+    })
+})
+
 // Create the GET to scrape for the definition of a term
 app.get('/scrape/:term', (request, response) => {
     puppeteer.launch().then(async function(browser) {

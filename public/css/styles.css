@@ -78,12 +78,12 @@ textarea {
     border-color: #000000;
     font-family: 'Work Sans', sans-serif;
     font-size: large;
+    font-weight: 800;
 }
 
 textarea::placeholder {
     color: #444444;
 }
-
 
 /********************/
 /* Load Bar Styles  */
@@ -122,6 +122,37 @@ textarea::placeholder {
 .grid-slang {
     grid-row: 1;
     grid-column: 1;
+}
+.grid-slang .slang-container {
+    position: relative;
+    width: 30vw;
+    height: 30vh;
+    background-color: #999999;
+}
+.grid-slang .slang-container > textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    padding: 0px 0px 0px 5px;
+    background: transparent;
+    z-index: 1;
+}
+.grid-slang .slang-container .suggestion-container {
+    width: 30vw;
+    height: 30vh;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    align-items: top;
+    font-size: 18px;
+    padding: 3px 0px 0px 8px;
+    color: #444444;
+    font-family: 'Work Sans', sans-serif;
+    font-size: large;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .grid-unknowns {

@@ -23,7 +23,7 @@
     
     </head>
     
-    <body>
+    <body onload="fetchAllTerms()">
         <!-- The larger title at the top of the screen -->
         <div class="title">Zoomer2Boomer</div>
 
@@ -31,11 +31,14 @@
             <!-- The text area and title for the slang -->
             <div class="grid-slang">
                 <subtitle>Slang</subtitle><br/>
-                <textarea
+                <div class="slang-container">
+                    <textarea
                     id="slang"
                     oninput="translate/reset()"
                     autofocus=true
                     placeholder="Type your slang sentence here."></textarea>
+                    <span class="suggestion-container"></span>
+                </div>
             </div>
 
             <!-- The arrow between the text areas -->
@@ -89,5 +92,6 @@
         <script src="js/require.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src="js/translate.js"></script>
+        <script src="js/completion.js"></script>
     </body>
 </html>

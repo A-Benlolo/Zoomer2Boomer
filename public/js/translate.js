@@ -1,5 +1,3 @@
-var wordList = fetchAllTerms();
-
 /**
  * Translate the contents of the slang text area and put it in the formal text area
  */
@@ -150,21 +148,6 @@ async function fetchQuery(token) {
 }
 
 /**
- * Get all the terms from the database by using cheeky SQL injection
- * 
- * @returns An array of all terms in the dabase.
- */
-async function fetchAllTerms() {
-    var response = await fetch('query/" OR 1=1 -- c');
-    var data = await response.json();
-    var allTerms = {}
-    for(var i = 0; i < data.length; i++)
-        allTerms[i] = data[i].translation;
-    
-    return allTerms;
-}
-
-/**
  * Scrape a defintion of a term from UrbanDictionary
  * 
  * @param {String} term The term to autodefine.
@@ -202,8 +185,6 @@ function updateTranslationList(term, translation, isScraped) {
 function updatedUnknownList(term) {
     document.getElementById("unknownlist").innerHTML += term + "<br/>";
 }
-
-
 
 /**
  * Add punctuation to the end of a sentence if it was originally there.
