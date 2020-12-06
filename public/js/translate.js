@@ -10,10 +10,16 @@ async function doTranslation() {
     // Clear the text in the formal box and translation list
     reset();
 
+    //Creating the loading bar to appear on the screen
+    $("#loadBar").show();
+    
+    
     // If the slang box is empty, return
-    if(!slangText)
+    if(!slangText){
+        document.body.style.cursor="default";
+        $("#loadBar").hide();
         return;
-
+    }
     // Get the individual words of the setence in all lowercase.
     var tokens = tokenize(slangText);
 
@@ -22,7 +28,10 @@ async function doTranslation() {
     for(var i = 0; i < tokens.length; i++) {
         // Create a clean version of the current term
         currTerm = tokens[i].toLowerCase().replace(/[^\w\s']|_/g, "");
-
+        
+        //Add a % of the loading bar for each word finished in the sentence
+        loadBarDone.style.width = `${((i + 1) / tokens.length) * 100}%`;
+        
         // If the current term was all special characters, continue
         if(!currTerm)
             continue;
@@ -63,11 +72,21 @@ async function doTranslation() {
                 workingSentence += " " + tokens[i];
 
         }
-
+        // This is to set the cursor from the wait state, to the default again.
+        // It also hides the loading bar after it is done loading
+        // Plus a .25 second delay for response
+        setTimeout(function() {
+            $("#loadBar").hide();
+            document.body.style.cursor="default";
+        }, 250);
         // Set the working sentence to the formal text
         if(workingSentence.startsWith(" "))
             workingSentence = workingSentence.substring(1);
-        document.getElementById("formal").value = workingSentence;
+        setTimeout(function() {
+            document.getElementById("formal").value = workingSentence;
+        }, 250);
+        
+        
     }
 
     // Add the disclaimer if UrbanDictionary translations were used
@@ -183,6 +202,8 @@ function updateTranslationList(term, translation, isScraped) {
 function updatedUnknownList(term) {
     document.getElementById("unknownlist").innerHTML += term + "<br/>";
 }
+
+
 
 /**
  * Add punctuation to the end of a sentence if it was originally there.
