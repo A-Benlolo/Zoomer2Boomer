@@ -9,13 +9,14 @@ async function doTranslation() {
     reset();
 
     //Creating the loading bar to appear on the screen
-    $("#loadBar").show();
+    document.getElementById("load-processing").style.display = "grid"
     
     
     // If the slang box is empty, return
     if(!slangText){
         document.body.style.cursor="default";
-        $("#loadBar").hide();
+        document.getElementById("load-processing").style.display = "none"
+        document.getElementById("load-done").style.display = "grid"
         return;
     }
     // Get the individual words of the setence in all lowercase.
@@ -27,8 +28,8 @@ async function doTranslation() {
         // Create a clean version of the current term
         currTerm = tokens[i].toLowerCase().replace(/[^\w\s']|_/g, "");
         
-        //Add a % of the loading bar for each word finished in the sentence
-        loadBarDone.style.width = `${((i + 1) / tokens.length) * 100}%`;
+        // //Add a % of the loading bar for each word finished in the sentence
+        // loadBarDone.style.width = `${((i + 1) / tokens.length) * 100}%`;
         
         // If the current term was all special characters, continue
         if(!currTerm)
@@ -74,7 +75,8 @@ async function doTranslation() {
         // It also hides the loading bar after it is done loading
         // Plus a .25 second delay for response
         setTimeout(function() {
-            $("#loadBar").hide();
+            document.getElementById("load-processing").style.display = "none"
+            document.getElementById("load-done").style.display = "block"
             document.body.style.cursor="default";
         }, 250);
         // Set the working sentence to the formal text
