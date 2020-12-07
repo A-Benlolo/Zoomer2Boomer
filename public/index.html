@@ -28,6 +28,14 @@
                 bar.style.display = "none";
             }
         }
+        function showtts() {
+            var tts = document.getElementById("form1");
+            if (tts.style.display === "none") {
+                tts.style.display = "block";
+            } else {
+                tts.style.display = "none";
+            }
+        }
     </script>
 
 </head>
@@ -50,8 +58,15 @@
         <!-- The arrow between the text areas -->
         <div class="grid-arrow">
             <!-- <button type="button" onclick="loadBar(); setCursor(); translate/doTranslation()">Translate</button> -->
-            <img src="img/orange_circles.gif" class="loading-symbol" id="load-processing"/>
+            <img src="img/orange_circles.gif" class="loading-symbol" id="load-processing" />
             <img src="img/arrow.png" id="load-done" onclick="loadCircle(); noCircle(); setCursor(); doTranslation()">
+            <br />
+            <tiptext>
+                Tip: Use $ to force a slang definition.
+            </tiptext>
+            <br /><br />
+            <tiptext id="example-slang">
+            </tiptext>
         </div>
 
         <!-- <div class="grid-arrow" id="load-done">
@@ -80,42 +95,28 @@
 
         <!-- The button to do the translations -->
         <div class="grid-button">
-            
-            <br /><br />
-            <tiptext>
-                Tip: Use $ to force a slang definition.
-            </tiptext>
-            <br /><br />
-            <tiptext id="example-slang">
-            </tiptext>
-
-            <div>
-                <br/>
+            <br/>
+            <button type="button" id="formButton" onclick="showtts()">Toggle Text To Speech</button>
+            <div id="form1" style="display: none;">
+                <br />
                 <div class="row">
-                    <label>Choose voice</label>
+                    <ttstext>Choose voice</ttstext>
                     <select id="voices"></select>
                 </div>
+                <br/>
                 <div class="row">
-                    <div class="col s6">
-                        <label>Rate</label>
-                        <p class="range-field">
-                            <input type="range" id="rate" min="1" max="100" value="10" />
-                        </p>
-                    </div>
-        
-        
-                    <div class="col s6">
-                        <label>Pitch</label>
-                        <p class="range-field">
-                            <input type="range" id="pitch" min="0" max="2" value="1" />
-                        </p>
-                    </div>
-                    <div class="col s12">
-                        <p>N.B. Rate and Pitch only work with native voice.</p>
-                    </div>
+                    <ttstext>Rate</ttstext>
+                    <p class="range-field">
+                        <input type="range" id="rate" min="1" max="100" value="10" class="golden-slider"/>
+                    </p>
+
+                    <ttstext>Pitch</ttstext>
+                    <p class="range-field">
+                        <input type="range" id="pitch" min="0" max="2" value="1" class="golden-slider"/>
+                    </p>
                 </div>
-        
-                <a href="#" id="speak">Speak</a>
+
+                <button type="button" id="speak" class="button-small">Speak</a>
             </div>
 
         </div>

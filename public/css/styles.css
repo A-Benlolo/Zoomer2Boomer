@@ -65,6 +65,17 @@ tiptext {
         1px 1px 0 #000000;
 }
 
+ttstext {
+    font-size: 1vw;
+    color: #d3ac48;
+    text-shadow:
+        -1px -1px 0 #000000,  
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000,
+        1px 1px 0 #000000;
+}
+
+
 /********************/
 /* Text Area Styles */
 /********************/
@@ -169,7 +180,7 @@ textarea::placeholder {
 }
 .grid-arrow > img {
     width: 20vw;
-    padding-top: 13vh;
+    padding-top: 11vh;
     margin-left: auto;
     margin-right: auto;
 }
@@ -178,19 +189,6 @@ textarea::placeholder {
     padding-top: 10vh;
     display: none;
 }
-
-/* .grid-arrow > button {
-    background-color: #111;
-    color: #daa520;
-    width: 15vw;
-    height: 5vh;
-    font-family: 'Work Sans', sans-serif;
-    font-size: larger;
-    margin-bottom: -10vh;
-    margin-top: 10vh;
-    margin-left: 0.4vw;
-    position: absolute;
-} */
 
 .grid-button {
     grid-row: 2;
@@ -211,4 +209,62 @@ textarea::placeholder {
 .grid-tts {
     grid-row: 3;
     grid-column: 2;
+}
+
+button {
+    background-color: #111;
+    color: #daa520;
+    width: 15vw;
+    height: 6vh;
+    font-family: 'Work Sans', sans-serif;
+    font-size: larger;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button-small {
+    background-color: #111;
+    color: #daa520;
+    width: 7.5vw;
+    height: 3vh;
+    font-family: 'Work Sans', sans-serif;
+    font-size: larger;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.golden-slider {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 25px;
+    background:#101010;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-top: -12px
+}
+
+.golden-slider:hover {
+    opacity: 1;
+}
+  
+.golden-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #daa520;
+    cursor: pointer;
+}
+  
+.golden-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #ff0000;
+    cursor: pointer;
+}
+
+select {
+    background-color: #999999;
 }
