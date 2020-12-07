@@ -56,7 +56,7 @@ listtext {
 }
 
 tiptext {
-    font-size: 1vw;
+    font-size: 1.2vw;
     color: #d3ac48;
     text-shadow:
         -1px -1px 0 #000000,  
@@ -146,6 +146,7 @@ textarea::placeholder {
     top: 0px;
     display: flex;
     align-items: top;
+    text-align: left;
     font-size: 18px;
     padding: 3px 0px 0px 8px;
     color: #444444;

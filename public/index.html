@@ -23,7 +23,7 @@
     
     </head>
     
-    <body onload="fetchAllTerms()">
+    <body>
         <!-- The larger title at the top of the screen -->
         <div class="title">Zoomer2Boomer</div>
 
@@ -72,18 +72,18 @@
             <div id = "loadBar" hidden>
                 <div id="loadBarDone"></div>
             </div>
-
-            
+ 
             <!-- The button to do the translations -->
             <div class="grid-button">
                 <button
                     type="button"
                     onclick="loadBar(); setCursor(); translate/doTranslation()">Translate</button>
-                <br/>
+                <br/><br/>
                 <tiptext>
-                    Tip: surround a word with $ to force a slang definition
-                    <br/><br/>
-                    e.g $tea$
+                    Tip: Use $ to force a slang definition.
+                </tiptext>
+                <br/><br/>
+                <tiptext id="example-slang">
                 </tiptext>
             </div>
         </div>
@@ -93,5 +93,6 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src="js/translate.js"></script>
         <script src="js/completion.js"></script>
+        <script src="js/getExample.js"></script>
     </body>
 </html>

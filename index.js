@@ -35,7 +35,16 @@ app.get('/query/:term', (request, response) => {
 
 // Create the GET to query for all terms
 app.get('/queryAll', (request, response) => {
-    let sql = `SELECT term FROM word`
+    let sql = `SELECT term FROM word ORDER BY length(term), term ASC;`
+    connection.query(sql, (err, result) => {
+        if(err) throw err
+        response.json(result)
+    })
+})
+
+// Create the GET to query for all salng terms
+app.get('/queryAllSlang', (request, response) => {
+    let sql = `SELECT term FROM word WHERE isSlang=1;`
     connection.query(sql, (err, result) => {
         if(err) throw err
         response.json(result)
@@ -110,6 +119,8 @@ app.get('/scrape/:term', (request, response) => {
                 "adjective: ",
                 "adj: ",
                 "feel ",
+                "way of calling somebody ",
+                "stands for ",
             ]
             for(var i = 0; i < introPhases.length; i++)
                 definition = definition.replace(introPhases[i], "");   
@@ -121,6 +132,7 @@ app.get('/scrape/:term', (request, response) => {
                 ";",
                 "--",
                 "\\r",
+                " that requires ",
             ]
             for(var i = 0; i < puncuations.length; i++)
                 [definition] = definition.split(puncuations[i]);

@@ -10,12 +10,15 @@ let insertText = false;
 
 slangTextArea.addEventListener("input", e => {
 	// Ensure empty space was not added
-	if (e.data != " " && e.data != null) {
+	if (e.data != " ")
 		insertText = true;
+	else {
+		suggestionEl.innerHTML = "";
+		return;
 	}
-	if (insertText == false) {
+
+	if (insertText == false)
 		slangTextArea.value = "";
-	}
  
 	// Get the text in the box
 	let inputValue = e.target.value;
@@ -27,7 +30,7 @@ slangTextArea.addEventListener("input", e => {
 		inputValueFinalToken = (inputValueTokens[inputValueTokens.length - 1])
 
 	// Get all potential completetions of the last word
-	suggestedWordsArray = filterArray(wordsArray, inputValueFinalToken);
+	suggestedWordsArray = filterArray(wordsArray, inputValueFinalToken, true);
 
 	// Get the first suggested word
 	suggestedWord = suggestedWordsArray[0];
@@ -61,9 +64,6 @@ slangTextArea.addEventListener("keydown", e => {
 			e.preventDefault();
 			// Get deconstructed sentence
 			let inputValueTokens = slangTextArea.value.match(/\S+/g) || [];
-			let inputValueFinalToken = ""
-			if(inputValueTokens.length != 0)
-				inputValueFinalToken = (inputValueTokens[inputValueTokens.length - 1])
 
 			// Construct the suggested sentence
 			let suggestedSentence = "";
@@ -77,10 +77,10 @@ slangTextArea.addEventListener("keydown", e => {
 		}
 	}
 });
- 
+
+fetchAllTerms()
+
 function filterArray(array, item, reverse = false) {
-	console.log(array)
-	console.log(typeof(array))
 	if (reverse) {
 		return array
 		.filter(word => compareTwoStrings(word, item))
